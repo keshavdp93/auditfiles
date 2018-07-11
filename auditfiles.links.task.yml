@@ -1,5 +1,0 @@
-auditfiles.report_auditfiles_links:
-  route_name: auditfiles.notindatabase
-  title: 'Add category'
-  appears_on:
-    - auditfiles.report_auditfiles

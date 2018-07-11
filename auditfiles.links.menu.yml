@@ -11,6 +11,12 @@ auditfiles.report_auditfiles_sub:
   description: 'Allows for comparing and correcting files and file references in the "files" directory, in the database, and in content.'
   route_name: auditfiles.notindatabase
 
+auditfiles.report_auditfiles_sub1:
+  title: 'Not on server'
+  parent: auditfiles.report_auditfiles
+  description: 'Lists files that are in the database, but not in the "files" directory.'
+  route_name: auditfiles.audit_files_notonserver
+
 auditfiles.auditfiles_configuration:
   title: 'Audit Files'
   parent: system.admin_config_system
