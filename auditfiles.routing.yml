@@ -1,0 +1,23 @@
+auditfiles.notindatabase:
+  path: '/admin/reports/auditfiles/notindatabase'
+  defaults:
+    _form: '\Drupal\auditfiles\Form\NotInDatabase'
+    _title: 'Not in database'
+  requirements:
+    _permission: 'administer site configuration'
+
+auditfiles.auditfiles_configuration:
+  path: '/admin/config/system/auditfiles_config'
+  defaults:
+    _form: '\Drupal\auditfiles\Form\AuditFilesConfig'
+    _title: 'Audit Files'
+  requirements:
+    _permission: 'administer site configuration'
+
+auditfiles.report_auditfiles:
+  path: 'admin/reports/auditfiles'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Audit Files'
+  requirements:
+    _permission: 'administer site configuration'

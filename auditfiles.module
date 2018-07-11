@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * Hook_preprocess_page().
+ */
+function auditfiles_preprocess_page($var){
+
+}

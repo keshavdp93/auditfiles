@@ -1,0 +1,18 @@
+auditfiles.report_auditfiles:
+  title: 'Audit Files'
+  parent: system.admin_reports
+  description: 'Allows for comparing and correcting files and file references in the "files" directory, in the database, and in content.'
+  route_name: auditfiles.report_auditfiles
+  weight: -2
+
+auditfiles.report_auditfiles_sub:
+  title: 'Not in database'
+  parent: auditfiles.report_auditfiles
+  description: 'Allows for comparing and correcting files and file references in the "files" directory, in the database, and in content.'
+  route_name: auditfiles.notindatabase
+
+auditfiles.auditfiles_configuration:
+  title: 'Audit Files'
+  parent: system.admin_config_system
+  description: 'Allows for comparing and correcting files and file references in the "files" directory, in the database, and in content.'
+  route_name: auditfiles.auditfiles_configuration

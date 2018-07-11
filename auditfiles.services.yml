@@ -1,0 +1,3 @@
+services:
+ auditfiles.not_in_database:
+   class: Drupal\auditfiles\ServiceNotInDatabase
