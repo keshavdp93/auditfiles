@@ -4,5 +4,5 @@
  * Hook_preprocess_page().
  */
 function auditfiles_preprocess_page($var){
-
+// \Drupal::service('auditfiles.not_on_server')->test();
 }

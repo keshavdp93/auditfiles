@@ -131,11 +131,10 @@ class NotInDatabase extends FormBase implements ConfirmFormInterface {
         $pages = array_chunk($rows, $items_per_page, TRUE);
       }
     }
-
     // Define the form.
     // Setup the record count and related messages.
     $maximum_records =  $config->get('auditfiles_report_options_maximum_records') ? $config->get('auditfiles_report_options_maximum_records') : 250;
-    $form_count = '';
+   // $form_count = '';
     if (!empty($rows)) {
       if ($maximum_records > 0) {
         $file_count_message = 'Found at least @count files on the server that are not in the database.';
@@ -143,12 +142,11 @@ class NotInDatabase extends FormBase implements ConfirmFormInterface {
       else {
         $file_count_message = 'Found @count files on the server that are not in the database.';
       }
-      $output = $this->formatPlural(count($rows), 'Found 1 file on the server that is not in the database.', $file_count_message);
+      $form_count = $this->formatPlural(count($rows), 'Found 1 file on the server that is not in the database.', $file_count_message);
     }
     else {
       $form_count = 'Found no files on the server that are not in the database.';
     }
-
     // Create the form table.
     $form['files'] = [
       '#type' => 'tableselect',

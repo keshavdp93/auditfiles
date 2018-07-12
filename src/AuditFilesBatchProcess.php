@@ -80,4 +80,39 @@ class AuditFilesBatchProcess {
     $element = preg_quote($element);
   }
 
+  /**
+   * The function that is called when the batch is complete.
+   */
+  public static function _auditfiles_not_on_server_batch_finish_batch($success, $results, $operations) {
+    if ($success) {
+    // Do tasks
+    }
+    else {
+      $error_operation = reset($operations);
+      drupal_set_message(
+        t('An error occurred while processing @operation with arguments : @args',
+          [
+            '@operation' => $error_operation[0],
+            '@args' => print_r($error_operation[0], TRUE),
+          ]
+        )
+      );
+    }
+  }
+
+  /**
+   * The batch process for deleting the file.
+   *
+   * @param int $file_id
+   *   The ID of a file to delete.
+   * @param array $context
+   *   Used by the Batch API to keep track of and pass data from one operation to
+   *   the next.
+   */
+  public static function _auditfiles_not_on_server_batch_delete_process_batch($file_id, array &$context) {
+    \Drupal::service('auditfiles.not_on_server')->_auditfiles_not_on_server_batch_delete_process_file($file_id);
+    $context['results'][] = $file_id;
+    $context['message'] = t('Processed file ID %file_id.', ['%file_id' => $file_id]);
+  }
+
 }
