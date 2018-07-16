@@ -22,6 +22,14 @@ auditfiles.audit_files_notonserver:
   requirements:
     _permission: 'administer site configuration'
 
+auditfiles.audit_files_managednotused:
+  path: 'admin/reports/auditfiles/managednotused'
+  defaults:
+    _form: '\Drupal\auditfiles\Form\AuditFilesManagedNotUsed'
+    _title: 'Managed not used'
+  requirements:
+    _permission: 'administer site configuration'
+
 auditfiles.report_auditfiles:
   path: 'admin/reports/auditfiles'
   defaults:
@@ -29,7 +37,4 @@ auditfiles.report_auditfiles:
     _title: 'Audit Files'
   requirements:
     _permission: 'administer site configuration'
-
-
-
 

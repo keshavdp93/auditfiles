@@ -1,5 +1,5 @@
 <?php
-
+use Drupal\Core\Database\Database;
 /**
  * Hook_preprocess_page().
  */

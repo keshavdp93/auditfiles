@@ -5,3 +5,5 @@ services:
   auditfiles.not_on_server:
     class: Drupal\auditfiles\ServiceAuditFilesNotOnServer
 
+  auditfiles.managed_not_used:
+    class: Drupal\auditfiles\ServiceAuditFilesManagedNotUsed

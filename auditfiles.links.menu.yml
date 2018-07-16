@@ -5,17 +5,23 @@ auditfiles.report_auditfiles:
   route_name: auditfiles.report_auditfiles
   weight: -2
 
-auditfiles.report_auditfiles_sub:
+auditfiles.report_notindatabase:
   title: 'Not in database'
   parent: auditfiles.report_auditfiles
   description: 'Allows for comparing and correcting files and file references in the "files" directory, in the database, and in content.'
   route_name: auditfiles.notindatabase
 
-auditfiles.report_auditfiles_sub1:
+auditfiles.report_audit_files_notonserver:
   title: 'Not on server'
   parent: auditfiles.report_auditfiles
   description: 'Lists files that are in the database, but not in the "files" directory.'
   route_name: auditfiles.audit_files_notonserver
+
+auditfiles.report_audit_files_managednotused:
+  title: 'Managed not used'
+  parent: auditfiles.report_auditfiles
+  description: 'Lists files that are in the file_managed table, but not in the file_usage table.'
+  route_name: auditfiles.audit_files_managednotused
 
 auditfiles.auditfiles_configuration:
   title: 'Audit Files'
