@@ -23,6 +23,12 @@ auditfiles.report_audit_files_managednotused:
   description: 'Lists files that are in the file_managed table, but not in the file_usage table.'
   route_name: auditfiles.audit_files_managednotused
 
+auditfiles.report_audit_files_usednotmanaged:
+  title: 'Used not managed'
+  parent: auditfiles.report_auditfiles
+  description: 'Lists files that are in the file_usage table, but not in the file_managed table.'
+  route_name: auditfiles.audit_files_usednotmanaged
+
 auditfiles.auditfiles_configuration:
   title: 'Audit Files'
   parent: system.admin_config_system
