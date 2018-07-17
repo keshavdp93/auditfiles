@@ -1,8 +1,8 @@
 <?php
 /**
-* @file providing the service that used in not in database functionality.
-*
-*/
+ * @file providing the service that used in not in 
+ * database batch processing functionality.
+ */
 namespace  Drupal\auditfiles;
 
 use Drupal\Core\Database\Database;
@@ -11,7 +11,7 @@ use Drupal\Component\Utility\Html;
 class AuditFilesBatchProcess {
 
   /**
-   * The function that is called when the batch is completed.
+   * Called when the batch is completed in 'not in database fumctionality'.
    */
   public static function auditfiles_not_in_database_batch_finish_batch($success, $results, $operations) {
     if ($success) {
@@ -32,9 +32,6 @@ class AuditFilesBatchProcess {
 
   /**
    * The batch process for adding the file.
-   *
-   * @param string $filename
-   *   The full pathname to the file to add to the database.
    * @param array $context
    *   Used by the Batch API to keep track of data and pass it from one operation
    *   to the next.
@@ -47,9 +44,6 @@ class AuditFilesBatchProcess {
 
   /**
    * The batch process for deleting the file.
-   *
-   * @param string $filename
-   *   The filename to delete.
    * @param array $context
    *   Used by the Batch API to keep track of data and pass it from one operation
    *   to the next.
@@ -81,7 +75,7 @@ class AuditFilesBatchProcess {
   }
 
   /**
-   * The function that is called when the batch is complete.
+   * Called when the batch is complete in 'Not on server'.
    */
   public static function _auditfiles_not_on_server_batch_finish_batch($success, $results, $operations) {
     if ($success) {
@@ -128,6 +122,33 @@ class AuditFilesBatchProcess {
    * The function that is called when the batch is complete.
    */
   public static function _auditfiles_managed_not_used_batch_finish_batch($success, $results, $operations) {
+    if (!$success) {
+      $error_operation = reset($operations);
+      drupal_set_message(
+        t('An error occurred while processing @operation with arguments : @args',
+          [
+            '@operation' => $error_operation[0],
+            '@args' => print_r($error_operation[0], TRUE),
+          ]
+        )
+      );
+    }
+  }
+
+  /**
+   * The batch process for deleting the file feature 'used not managed'.
+   *
+   */
+  public static function _auditfiles_used_not_managed_batch_delete_process_batch($file_id, array &$context) {
+    \Drupal::service('auditfiles.used_not_managed')->_auditfiles_used_not_managed_batch_delete_process_file($file_id);
+    $context['results'][] = $file_id;
+    $context['message'] = t('Processed file ID %file_id.', ['%file_id' => $file_id]);
+  }
+
+  /**
+   * Called when the batch is complete : functionality 'used not managed'.
+   */
+  public static function _auditfiles_used_not_managed_batch_finish_batch($success, $results, $operations) {
     if (!$success) {
       $error_operation = reset($operations);
       drupal_set_message(
