@@ -130,12 +130,12 @@ class AuditFilesManagedNotUsed extends FormBase implements ConfirmFormInterface 
     $maximum_records = $config->get('auditfiles_report_options_maximum_records') ? $config->get('auditfiles_report_options_maximum_records') : 50;
     if (!empty($rows)) {
       if ($maximum_records > 0) {
-        $file_count_message = 'Found at least @count files in the file_managed table that are not in the file_usage table.';
+        $file_count_message = $this->t('Found at least @count files in the file_managed table that are not in the file_usage table.');
       }
       else {
-        $file_count_message = 'Found @count files in the file_managed table that are not in the file_usage table.';
+        $file_count_message = $this->t('Found @count files in the file_managed table that are not in the file_usage table.');
       } 
-      $form_count = $this->formatPlural(count($rows), 'Found 1 file on the server that is not in the database.', $file_count_message);
+      $form_count = $this->formatPlural(count($rows), $this->t('Found 1 file in the file_managed table that is not in the file_usage table.'), $file_count_message);
     }
     else {
       $form_count = $this->t('Found no files in the file_managed table that are not in the file_usage table.');

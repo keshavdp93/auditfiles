@@ -137,15 +137,15 @@ class NotInDatabase extends FormBase implements ConfirmFormInterface {
    // $form_count = '';
     if (!empty($rows)) {
       if ($maximum_records > 0) {
-        $file_count_message = 'Found at least @count files on the server that are not in the database.';
+        $file_count_message = $this->t('Found at least @count files on the server that are not in the database.');
       }
       else {
-        $file_count_message = 'Found @count files on the server that are not in the database.';
+        $file_count_message = $this->t('Found @count files on the server that are not in the database.');
       }
       $form_count = $this->formatPlural(count($rows), 'Found 1 file on the server that is not in the database.', $file_count_message);
     }
     else {
-      $form_count = 'Found no files on the server that are not in the database.';
+      $form_count = $this->t('Found no files on the server that are not in the database.');
     }
     // Create the form table.
     $form['files'] = [
