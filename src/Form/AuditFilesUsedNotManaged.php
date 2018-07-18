@@ -133,7 +133,7 @@ class AuditFilesUsedNotManaged extends FormBase implements ConfirmFormInterface 
       else {
         $file_count_message = $this->t('Found @count files in the file_usage table that are not in the file_managed table.');
       }
-      $form_count = $this->formatPlural(count($rows), $this->t('Found 1 file on the server that is not in the database.'), $file_count_message);
+      $form_count = $this->formatPlural(count($rows), $this->t('Found 1 file in the file_usage table that is not in the file_managed table.'), $file_count_message);
     }
     else {
       $form_count = $this->t('Found no files in the file_usage table that are not in the file_managed table.');

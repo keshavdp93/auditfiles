@@ -162,4 +162,31 @@ class AuditFilesBatchProcess {
     }
   }
 
+  /**
+   * The batch process for deleting the file.
+   *
+   */
+  public static function _auditfiles_used_not_referenced_batch_delete_process_batch($file_id, array &$context) {
+    \Drupal::service('auditfiles.used_not_referenced')->_auditfiles_used_not_referenced_batch_delete_process_file($file_id);
+    $context['results'][] = $file_id;
+    $context['message'] = t('Processed file ID %file_id.', ['%file_id' => $file_id]);
+  }
+
+  /**
+   * The function that is called when the batch is complete.
+   */
+  public static function _auditfiles_used_not_referenced_batch_finish_batch($success, $results, $operations) {
+    if (!$success) {
+      $error_operation = reset($operations);
+      drupal_set_message(
+        t('An error occurred while processing @operation with arguments : @args',
+          [
+            '@operation' => $error_operation[0],
+            '@args' => print_r($error_operation[0], TRUE),
+          ]
+        )
+      );
+    }
+  }
+
 }

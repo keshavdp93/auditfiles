@@ -10,3 +10,6 @@ services:
 
   auditfiles.used_not_managed:
     class: Drupal\auditfiles\ServiceAuditFilesUsedNotManaged
+
+  auditfiles.used_not_referenced:
+    class: Drupal\auditfiles\ServiceAuditFilesUsedNotReferenced
