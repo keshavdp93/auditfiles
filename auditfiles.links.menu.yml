@@ -40,6 +40,13 @@ auditfiles.report_audit_files_usednotreferenced:
   route_name: auditfiles.audit_files_usednotreferenced
   weight: 5
 
+auditfiles.report_audit_files_referencednotused:
+  title: 'Referenced not used'
+  parent: auditfiles.report_auditfiles
+  description: 'List files referenced in content, but not in the file_usage table.'
+  route_name: auditfiles.audit_files_referencednotused
+  weight: 6
+
 auditfiles.auditfiles_configuration:
   title: 'Audit Files'
   parent: system.admin_config_system

@@ -13,3 +13,6 @@ services:
 
   auditfiles.used_not_referenced:
     class: Drupal\auditfiles\ServiceAuditFilesUsedNotReferenced
+
+  auditfiles.referenced_not_used:
+    class: Drupal\auditfiles\ServiceAuditFilesReferencedNotUsed
