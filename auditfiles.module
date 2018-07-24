@@ -6,11 +6,3 @@ use Drupal\Core\Database\Database;
 function auditfiles_preprocess_page($var) {
 
 }
-
-
-
-
-
-
-
-

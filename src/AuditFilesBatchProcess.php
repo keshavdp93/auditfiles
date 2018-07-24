@@ -189,4 +189,43 @@ class AuditFilesBatchProcess {
     }
   }
 
+  /**
+   * The function that is called when the batch is complete.
+   */
+  public static function _auditfiles_referenced_not_used_batch_finish_batch($success, $results, $operations) {
+    if (!$success) {
+      $error_operation = reset($operations);
+      drupal_set_message(
+        t('An error occurred while processing @operation with arguments : @args',
+          [
+            '@operation' => $error_operation[0],
+            '@args' => print_r($error_operation[0], TRUE),
+          ]
+        )
+      );
+    }
+  }
+
+  /**
+   * The batch process for adding the file.
+   *   Used by the Batch API to keep track of and pass data from one operation to
+   *   the next.
+   */
+  public static function _auditfiles_referenced_not_used_batch_add_process_batch($reference_id, array &$context) {
+    \Drupal::service('auditfiles.referenced_not_used')->_auditfiles_referenced_not_used_batch_add_process_file($reference_id);
+    $context['results'][] = $reference_id;
+    $context['message'] = t('Processed reference ID %file_id.', ['%file_id' => $reference_id]);
+  }
+
+  /**
+   * The batch process for deleting the file.
+   *   Used by the Batch API to keep track of and pass data from one operation to
+   *   the next.
+   */
+  public static function _auditfiles_referenced_not_used_batch_delete_process_batch($reference_id, array &$context) {
+    \Drupal::service('auditfiles.referenced_not_used')->_auditfiles_referenced_not_used_batch_delete_process_file($reference_id);
+    $context['results'][] = $reference_id;
+    $context['message'] = t('Processed reference ID %file_id.', array('%file_id' => $reference_id));
+  }
+
 }
