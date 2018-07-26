@@ -1,7 +1,7 @@
 auditfiles.notindatabase:
   path: '/admin/reports/auditfiles/notindatabase'
   defaults:
-    _form: '\Drupal\auditfiles\Form\NotInDatabase'
+    _form: '\Drupal\auditfiles\Form\AuditFilesNotInDatabase'
     _title: 'Not in database'
   requirements:
     _permission: 'administer site configuration'
@@ -54,6 +54,14 @@ auditfiles.audit_files_referencednotused:
   requirements:
     _permission: 'administer site configuration'
 
+auditfiles.audit_files_mergefilereferences:
+  path: 'admin/reports/auditfiles/mergefilereferences'
+  defaults:
+    _form: '\Drupal\auditfiles\Form\AuditFilesMergeFileReferences'
+    _title: 'Merge file references'
+  requirements:
+    _permission: 'administer site configuration'
+
 auditfiles.report_auditfiles:
   path: 'admin/reports/auditfiles'
   defaults:
@@ -61,4 +69,3 @@ auditfiles.report_auditfiles:
     _title: 'Audit Files'
   requirements:
     _permission: 'administer site configuration'
-

@@ -204,7 +204,7 @@ class AuditFilesReferencedNotUsed extends FormBase implements ConfirmFormInterfa
         }
       } 
       if(!isset($storage)) {
-        drupal_set_message($this->t('No items were selected to operate on.'));  
+        drupal_set_message($this->t('No items were selected to operate on.'), 'error');  
       }
     }
   }
@@ -226,7 +226,7 @@ class AuditFilesReferencedNotUsed extends FormBase implements ConfirmFormInterfa
         }
       } 
       if(!isset($storage)) {
-        drupal_set_message($this->t('No items were selected to operate on.'));  
+        drupal_set_message($this->t('No items were selected to operate on.'), 'error');  
       }
     }
   }

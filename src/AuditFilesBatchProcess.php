@@ -25,7 +25,8 @@ class AuditFilesBatchProcess {
           '@operation' => $error_operation[0],
           '@args' => print_r($error_operation[0], TRUE),
          ]
-        )
+        ),
+        'error'
       );
     }
   }
@@ -89,7 +90,8 @@ class AuditFilesBatchProcess {
             '@operation' => $error_operation[0],
             '@args' => print_r($error_operation[0], TRUE),
           ]
-        )
+        ),
+        'error'
       );
     }
   }
@@ -130,7 +132,8 @@ class AuditFilesBatchProcess {
             '@operation' => $error_operation[0],
             '@args' => print_r($error_operation[0], TRUE),
           ]
-        )
+        ),
+        'error'
       );
     }
   }
@@ -157,7 +160,8 @@ class AuditFilesBatchProcess {
             '@operation' => $error_operation[0],
             '@args' => print_r($error_operation[0], TRUE),
           ]
-        )
+        ),
+        'error'
       );
     }
   }
@@ -184,7 +188,8 @@ class AuditFilesBatchProcess {
             '@operation' => $error_operation[0],
             '@args' => print_r($error_operation[0], TRUE),
           ]
-        )
+        ),
+        'error'
       );
     }
   }
@@ -201,7 +206,8 @@ class AuditFilesBatchProcess {
             '@operation' => $error_operation[0],
             '@args' => print_r($error_operation[0], TRUE),
           ]
-        )
+        ),
+        'error'
       );
     }
   }
@@ -225,7 +231,49 @@ class AuditFilesBatchProcess {
   public static function _auditfiles_referenced_not_used_batch_delete_process_batch($reference_id, array &$context) {
     \Drupal::service('auditfiles.referenced_not_used')->_auditfiles_referenced_not_used_batch_delete_process_file($reference_id);
     $context['results'][] = $reference_id;
-    $context['message'] = t('Processed reference ID %file_id.', array('%file_id' => $reference_id));
+    $context['message'] = t('Processed reference ID %file_id.', ['%file_id' => $reference_id]);
+  }
+
+
+  /**
+   * The function that is called when the batch is complete.
+   */
+  public static function _auditfiles_merge_file_references_batch_finish_batch($success, $results, $operations) {
+  if (!$success) {
+    $error_operation = reset($operations);
+    drupal_set_message(
+      t('An error occurred while processing @operation with arguments : @args',
+        [
+          '@operation' => $error_operation[0],
+          '@args' => print_r($error_operation[0], TRUE),
+        ]
+      ),
+        'error'
+    );
+    }
+  }
+
+  /**
+   * The batch process for deleting the file.
+   *
+   * @param int $file_being_kept
+   *   The file ID of the file to merge the other into.
+   * @param int $file_being_merged
+   *   The file ID of the file to merge.
+   * @param array $context
+   *   Used by the Batch API to keep track of and pass data from one operation to
+   *   the next.
+   */
+  public static function _auditfiles_merge_file_references_batch_merge_process_batch($file_being_kept, $file_being_merged, array &$context) {
+    \Drupal::service('auditfiles.merge_file_references')->_auditfiles_merge_file_references_batch_merge_process_file($file_being_kept, $file_being_merged);
+    $context['results'][] = $file_being_merged;
+    $context['message'] = t(
+      'Merged file ID %file_being_merged into file ID %file_being_kept.',
+      [
+        '%file_being_kept' => $file_being_kept,
+        '%file_being_merged' => $file_being_merged,
+      ]
+    );
   }
 
 }

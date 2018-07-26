@@ -193,7 +193,7 @@ class AuditFilesManagedNotUsed extends FormBase implements ConfirmFormInterface 
         }
       }
       if (!isset($storage)) {
-        drupal_set_message($this->t('No items were selected to operate on.'));  
+        drupal_set_message($this->t('No items were selected to operate on.'), 'error');  
       }
     }
   }
