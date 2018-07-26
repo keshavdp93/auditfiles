@@ -47,6 +47,13 @@ auditfiles.report_audit_files_referencednotused:
   route_name: auditfiles.audit_files_referencednotused
   weight: 6
 
+auditfiles.report_audit_files_mergefilereferences:
+  title: 'Merge file references'
+  parent: auditfiles.report_auditfiles
+  description: 'Lists potential duplicate files in the file_managed table, and allows for merging them into a single file.'
+  route_name: auditfiles.audit_files_mergefilereferences
+  weight: 7
+
 auditfiles.auditfiles_configuration:
   title: 'Audit Files'
   parent: system.admin_config_system

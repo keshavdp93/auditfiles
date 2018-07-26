@@ -11,7 +11,7 @@ use Drupal\Core\Form\ConfirmFormHelper;
 use Drupal\Core\Url;
 use Drupal\Core\Link;
 
-class NotInDatabase extends FormBase implements ConfirmFormInterface {
+class AuditFilesNotInDatabase extends FormBase implements ConfirmFormInterface {
   
   /**
    * Widget Id.
@@ -210,7 +210,7 @@ class NotInDatabase extends FormBase implements ConfirmFormInterface {
         }
       } 
       if(!isset($storage)) {
-        drupal_set_message($this->t('No items were selected to operate Add.'));  
+        drupal_set_message($this->t('No items were selected to operate Add.'),'error');  
       }
     }
   }
@@ -232,7 +232,7 @@ class NotInDatabase extends FormBase implements ConfirmFormInterface {
         }
       }
       if (!isset($storage)) {
-        drupal_set_message($this->t('No items were selected to operate Delete.'));  
+        drupal_set_message($this->t('No items were selected to operate Delete.'), 'error');  
       }
     }
   }

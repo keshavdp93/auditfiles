@@ -8,7 +8,7 @@ namespace  Drupal\auditfiles;
 use Drupal\Core\Database\Database;
 use Drupal\Component\Utility\Html;
 
-class ServiceNotInDatabase {
+class ServiceAuditFilesNotInDatabase {
 
   /**
    * Get the files that are not in database.

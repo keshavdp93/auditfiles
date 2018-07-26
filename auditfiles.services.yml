@@ -1,6 +1,6 @@
 services:
   auditfiles.not_in_database:
-    class: Drupal\auditfiles\ServiceNotInDatabase
+    class: Drupal\auditfiles\ServiceAuditFilesNotInDatabase
 
   auditfiles.not_on_server:
     class: Drupal\auditfiles\ServiceAuditFilesNotOnServer
@@ -16,3 +16,6 @@ services:
 
   auditfiles.referenced_not_used:
     class: Drupal\auditfiles\ServiceAuditFilesReferencedNotUsed
+
+  auditfiles.merge_file_references:
+    class: Drupal\auditfiles\ServiceAuditFilesMergeFileReferences
